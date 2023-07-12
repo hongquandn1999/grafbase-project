@@ -3,9 +3,11 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 import AuthProviders from './AuthProviders';
+import { getCurrentUser } from '@/lib/session';
 
-export default function Navbar() {
-  let session = {};
+const Navbar = async () => {
+  let session = await getCurrentUser();
+  console.log(session);
   return (
     <nav>
       <div className="navbar flexBetween">
@@ -34,4 +36,6 @@ export default function Navbar() {
       </div>
     </nav>
   );
-}
+};
+
+export default Navbar;
